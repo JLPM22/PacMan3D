@@ -303,7 +303,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 11400000, guid: 2b7005ba3a4d8474b8cdc34141ad766e, type: 2}
-  - {fileID: 11400000, guid: 8ca86f194b50b9040bbac6faf16c1f6d, type: 2}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: d48d38dbecb5bf44db08516376edc733, type: 2}
+  - {fileID: 11400000, guid: b9b40238eefdcf841834c152892f8196, type: 2}
+  - {fileID: 11400000, guid: d5f267ef7abdb9040a97002dc5c3cfe7, type: 2}
   beforeTransparentCustomPostProcesses: []
   beforeTAACustomPostProcesses: []
   beforePostProcessCustomPostProcesses: []

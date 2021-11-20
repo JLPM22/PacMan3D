@@ -316,7 +316,7 @@ Material:
     - _MetallicRemapMin: 0
     - _NormalMapSpace: 0
     - _NormalMapStrength: 1
-    - _NormalScale: 4.58
+    - _NormalScale: 4.82
     - _OpaqueCullMode: 2
     - _PPDLodThreshold: 5
     - _PPDMaxSamples: 15
