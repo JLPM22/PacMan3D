@@ -20,6 +20,9 @@ public class PacManMovement : MonoBehaviour
     private void Start()
     {
         Target = transform.position;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void Update()
