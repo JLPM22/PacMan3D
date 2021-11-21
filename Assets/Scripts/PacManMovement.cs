@@ -7,7 +7,7 @@ public class PacManMovement : MonoBehaviour
 {
     public float Speed = 1.0f;
     public float RotSpeed = 100.0f;
-    public Transform Visual;
+    public Transform RotTransform;
 
     public Direction CurrentDirection { get; private set; }
 
@@ -16,10 +16,19 @@ public class PacManMovement : MonoBehaviour
     public Transform RightTrigger;
     public Transform LeftTrigger;
 
+    private Animator Animator;
+    private int WalkHash = Animator.StringToHash("Walk");
+
     private Vector3 Target;
     private Vector3 TargetRot;
+    private Vector3 LastPosition;
 
     private bool InputForward, InputBackward, InputRight, InputLeft;
+
+    private void Awake()
+    {
+        Animator = GetComponent<Animator>();
+    }
 
     private void Start()
     {
@@ -68,7 +77,10 @@ public class PacManMovement : MonoBehaviour
         }
 
         transform.position = Vector3.MoveTowards(transform.position, Target, Speed * Time.deltaTime);
-        Visual.transform.rotation = Quaternion.RotateTowards(Visual.transform.rotation, Quaternion.Euler(TargetRot), RotSpeed * Time.deltaTime);
+        RotTransform.rotation = Quaternion.RotateTowards(RotTransform.rotation, Quaternion.Euler(TargetRot), RotSpeed * Time.deltaTime);
+
+        Animator.SetBool(WalkHash, Vector3.SqrMagnitude(transform.position - LastPosition) > 0.01f * 0.01f);
+        LastPosition = transform.position;
     }
 
     private bool CheckCollision(Direction direction)

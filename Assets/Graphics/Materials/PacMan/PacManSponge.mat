@@ -295,10 +295,10 @@ Material:
     - _FlagsB: 8388608
     - _FuzzMapUVScale: 0.1
     - _FuzzStrength: 1
-    - _HeightAmplitude: 0.0004
-    - _HeightCenter: 0.25
+    - _HeightAmplitude: 0.08439999
+    - _HeightCenter: 0.0011848342
     - _HeightMapParametrization: 0
-    - _HeightMax: 0.04
+    - _HeightMax: 8.44
     - _HeightMin: 0
     - _HeightOffset: -0.01
     - _HeightPoMAmplitude: 2
@@ -458,5 +458,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_DiffusionProfileReferences:
-  - {fileID: 11400000, guid: 8ca86f194b50b9040bbac6faf16c1f6d, type: 2}
+  - {fileID: 0}
   m_MaterialReferences: []

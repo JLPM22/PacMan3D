@@ -295,10 +295,10 @@ Material:
     - _FlagsB: 8388608
     - _FuzzMapUVScale: 0.1
     - _FuzzStrength: 1
-    - _HeightAmplitude: 0.001
+    - _HeightAmplitude: 0.1012
     - _HeightCenter: -0
     - _HeightMapParametrization: 0
-    - _HeightMax: 0.1
+    - _HeightMax: 10.12
     - _HeightMin: 0
     - _HeightOffset: 0
     - _HeightPoMAmplitude: 2

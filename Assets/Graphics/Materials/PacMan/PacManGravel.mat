@@ -584,12 +584,12 @@ Material:
     - _FuzzMapUVScale: 0.1
     - _FuzzStrength: 1
     - _Glossiness: 0
-    - _HeightAmplitude: 0.001
+    - _HeightAmplitude: 0.0921
     - _HeightAmplitude0: 0.02
     - _HeightAmplitude1: 0.02
     - _HeightAmplitude2: 0.02
     - _HeightAmplitude3: 0.02
-    - _HeightCenter: 0.19999999
+    - _HeightCenter: 0.0021715525
     - _HeightCenter0: 0.5
     - _HeightCenter1: 0.5
     - _HeightCenter2: 0.5
@@ -599,7 +599,7 @@ Material:
     - _HeightMapParametrization1: 0
     - _HeightMapParametrization2: 0
     - _HeightMapParametrization3: 0
-    - _HeightMax: 0.1
+    - _HeightMax: 9.21
     - _HeightMax0: 1
     - _HeightMax1: 1
     - _HeightMax2: 1

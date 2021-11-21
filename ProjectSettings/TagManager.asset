@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - OnlyGhost
+  - Emissive_to_baked
   layers:
   - Default
   - TransparentFX
