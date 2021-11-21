@@ -9,6 +9,8 @@ public class PacManMovement : MonoBehaviour
     public float RotSpeed = 100.0f;
     public Transform Visual;
 
+    public Direction CurrentDirection { get; private set; }
+
     public Transform ForwardTrigger;
     public Transform BackwardTrigger;
     public Transform RightTrigger;
@@ -16,7 +18,6 @@ public class PacManMovement : MonoBehaviour
 
     private Vector3 Target;
     private Vector3 TargetRot;
-    private Direction CurrentDirection;
 
     private bool InputForward, InputBackward, InputRight, InputLeft;
 
@@ -26,6 +27,8 @@ public class PacManMovement : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        InputForward = true;
     }
 
     private void Update()
@@ -54,14 +57,14 @@ public class PacManMovement : MonoBehaviour
 
         if (x >= 0.5f && x < 0.6f)
         {
-            InputForward = false;
-            InputBackward = false;
+            if (InputBackward || InputRight || InputLeft) InputForward = false;
+            if (InputForward || InputRight || InputLeft) InputBackward = false;
         }
 
         if (z >= 0.5f && z < 0.6f)
         {
-            InputLeft = false;
-            InputRight = false;
+            if (InputForward || InputBackward || InputRight) InputLeft = false;
+            if (InputForward || InputBackward || InputLeft) InputRight = false;
         }
 
         transform.position = Vector3.MoveTowards(transform.position, Target, Speed * Time.deltaTime);
@@ -93,21 +96,25 @@ public class PacManMovement : MonoBehaviour
                 pos.z = Mathf.Round(pos.z - 0.5f) + 1.5f;
                 pos.x = Mathf.Round(pos.x - 0.5f) + 0.5f;
                 TargetRot = new Vector3(0, 0, 0);
+                CurrentDirection = Direction.Forward;
                 break;
             case Direction.Backward:
                 pos.z = Mathf.Round(pos.z + 0.5f) - 1.5f;
                 pos.x = Mathf.Round(pos.x - 0.5f) + 0.5f;
                 TargetRot = new Vector3(0, 180, 0);
+                CurrentDirection = Direction.Backward;
                 break;
             case Direction.Right:
                 pos.x = Mathf.Round(pos.x - 0.5f) + 1.5f;
                 pos.z = Mathf.Round(pos.z - 0.5f) + 0.5f;
                 TargetRot = new Vector3(0, 90, 0);
+                CurrentDirection = Direction.Right;
                 break;
             case Direction.Left:
                 pos.x = Mathf.Round(pos.x + 0.5f) - 1.5f;
                 pos.z = Mathf.Round(pos.z - 0.5f) + 0.5f;
                 TargetRot = new Vector3(0, -90, 0);
+                CurrentDirection = Direction.Left;
                 break;
         }
         Target = pos;
