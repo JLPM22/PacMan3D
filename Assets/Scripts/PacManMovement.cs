@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 public class PacManMovement : MonoBehaviour
 {
     public float Speed = 1.0f;
+    public float RotSpeed = 100.0f;
+    public Transform Visual;
 
     public Transform ForwardTrigger;
     public Transform BackwardTrigger;
@@ -13,6 +15,7 @@ public class PacManMovement : MonoBehaviour
     public Transform LeftTrigger;
 
     private Vector3 Target;
+    private Vector3 TargetRot;
     private Direction CurrentDirection;
 
     private bool InputForward, InputBackward, InputRight, InputLeft;
@@ -62,6 +65,7 @@ public class PacManMovement : MonoBehaviour
         }
 
         transform.position = Vector3.MoveTowards(transform.position, Target, Speed * Time.deltaTime);
+        Visual.transform.rotation = Quaternion.RotateTowards(Visual.transform.rotation, Quaternion.Euler(TargetRot), RotSpeed * Time.deltaTime);
     }
 
     private bool CheckCollision(Direction direction)
@@ -88,15 +92,22 @@ public class PacManMovement : MonoBehaviour
             case Direction.Forward:
                 pos.z = Mathf.Round(pos.z - 0.5f) + 1.5f;
                 pos.x = Mathf.Round(pos.x - 0.5f) + 0.5f;
+                TargetRot = new Vector3(0, 0, 0);
                 break;
             case Direction.Backward:
                 pos.z = Mathf.Round(pos.z + 0.5f) - 1.5f;
+                pos.x = Mathf.Round(pos.x - 0.5f) + 0.5f;
+                TargetRot = new Vector3(0, 180, 0);
                 break;
             case Direction.Right:
                 pos.x = Mathf.Round(pos.x - 0.5f) + 1.5f;
+                pos.z = Mathf.Round(pos.z - 0.5f) + 0.5f;
+                TargetRot = new Vector3(0, 90, 0);
                 break;
             case Direction.Left:
                 pos.x = Mathf.Round(pos.x + 0.5f) - 1.5f;
+                pos.z = Mathf.Round(pos.z - 0.5f) + 0.5f;
+                TargetRot = new Vector3(0, -90, 0);
                 break;
         }
         Target = pos;
