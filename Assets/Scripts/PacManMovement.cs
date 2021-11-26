@@ -24,6 +24,7 @@ public class PacManMovement : MonoBehaviour
     private Vector3 LastPosition;
 
     private bool InputForward, InputBackward, InputRight, InputLeft;
+    private bool MovingZAxis; // true -> z-axis, false -> x-axis
 
     private void Awake()
     {
@@ -38,6 +39,7 @@ public class PacManMovement : MonoBehaviour
         Cursor.visible = false;
 
         InputForward = true;
+        MovingZAxis = true;
     }
 
     private void Update()
@@ -46,6 +48,18 @@ public class PacManMovement : MonoBehaviour
 
         float x = transform.position.x - Mathf.Floor(transform.position.x);
         float z = transform.position.z - Mathf.Floor(transform.position.z);
+
+        if (!MovingZAxis && x >= 0.5f && x < 0.6f && (InputForward || InputBackward))
+        {
+            InputRight = false;
+            InputLeft = false;
+        }
+
+        if (MovingZAxis && z >= 0.5f && z < 0.6f && (InputRight || InputLeft))
+        {
+            InputForward = false;
+            InputBackward = false;
+        }
 
         if (InputForward && !CheckCollision(Direction.Forward) && x >= 0.5f && x < 0.6f)
         {
@@ -62,18 +76,6 @@ public class PacManMovement : MonoBehaviour
         else if (InputRight && !CheckCollision(Direction.Right) && z >= 0.5f && z < 0.6f)
         {
             ComputeTarget(Direction.Right);
-        }
-
-        if (x >= 0.5f && x < 0.6f)
-        {
-            if (InputBackward || InputRight || InputLeft) InputForward = false;
-            if (InputForward || InputRight || InputLeft) InputBackward = false;
-        }
-
-        if (z >= 0.5f && z < 0.6f)
-        {
-            if (InputForward || InputBackward || InputRight) InputLeft = false;
-            if (InputForward || InputBackward || InputLeft) InputRight = false;
         }
 
         transform.position = Vector3.MoveTowards(transform.position, Target, Speed * Time.deltaTime);
@@ -109,24 +111,28 @@ public class PacManMovement : MonoBehaviour
                 pos.x = Mathf.Round(pos.x - 0.5f) + 0.5f;
                 TargetRot = new Vector3(0, 0, 0);
                 CurrentDirection = Direction.Forward;
+                MovingZAxis = true;
                 break;
             case Direction.Backward:
                 pos.z = Mathf.Round(pos.z + 0.5f) - 1.5f;
                 pos.x = Mathf.Round(pos.x - 0.5f) + 0.5f;
                 TargetRot = new Vector3(0, 180, 0);
                 CurrentDirection = Direction.Backward;
+                MovingZAxis = true;
                 break;
             case Direction.Right:
                 pos.x = Mathf.Round(pos.x - 0.5f) + 1.5f;
                 pos.z = Mathf.Round(pos.z - 0.5f) + 0.5f;
                 TargetRot = new Vector3(0, 90, 0);
                 CurrentDirection = Direction.Right;
+                MovingZAxis = false;
                 break;
             case Direction.Left:
                 pos.x = Mathf.Round(pos.x + 0.5f) - 1.5f;
                 pos.z = Mathf.Round(pos.z - 0.5f) + 0.5f;
                 TargetRot = new Vector3(0, -90, 0);
                 CurrentDirection = Direction.Left;
+                MovingZAxis = false;
                 break;
         }
         Target = pos;
