@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BreadBehaviour : MonoBehaviour
 {
+    public int Score = 10;
     public Vector3 RotAxis;
     public float RotSpeed;
     public float DissolveTime = 1.0f;
@@ -27,7 +28,7 @@ public class BreadBehaviour : MonoBehaviour
     {
         if (!IsDissolving && other.CompareTag("Player"))
         {
-            ScoreManager.Instance.AddScore(1);
+            ScoreManager.Instance.AddScore(Score);
             StartCoroutine(Dissolve());
         }
     }

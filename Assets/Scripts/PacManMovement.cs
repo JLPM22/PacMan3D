@@ -81,7 +81,8 @@ public class PacManMovement : MonoBehaviour
             ComputeTarget(Direction.Right);
         }
 
-        transform.position = Vector3.MoveTowards(transform.position, Target, Speed * Time.deltaTime);
+        float speed = Time.time - ScoreManager.Instance.LastTimeScoreChanged < 1.0f ? Speed * 0.75f : Speed;
+        transform.position = Vector3.MoveTowards(transform.position, Target, speed * Time.deltaTime);
         RotTransform.rotation = Quaternion.RotateTowards(RotTransform.rotation, Quaternion.Euler(TargetRot), RotSpeed * Time.deltaTime);
 
         Animator.SetBool(WalkHash, Vector3.SqrMagnitude(transform.position - LastPosition) > 0.01f * 0.01f);

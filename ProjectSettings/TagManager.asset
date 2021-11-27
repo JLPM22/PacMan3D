@@ -4,7 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - OnlyGhost
   - Emissive_to_baked
   layers:
   - Default
@@ -18,9 +17,9 @@ TagManager:
   - PostProcessing
   - Not in Reflection
   - Bread
-  - 
-  - 
-  - 
+  - OnlyGhost
+  - Ghost
+  - PacMan
   - 
   - 
   - 

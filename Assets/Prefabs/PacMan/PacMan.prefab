@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4248176783158587218}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Armature
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4540715327329880}
   - component: {fileID: 8235436003977581599}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: rightEye
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7670912637048166658}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Movement
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -160,7 +160,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8553391040548163182}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Bone
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1007517326714797404}
   - component: {fileID: 251469455303161647}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: body
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -277,7 +277,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2282262430999036296}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: LeftTrigger
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -307,7 +307,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1808006125117660756}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ForwardTrigger
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -337,7 +337,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3422725430538838496}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: BackwardTrigger
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -369,7 +369,7 @@ GameObject:
   - component: {fileID: 2655370879067832200}
   - component: {fileID: 8939718887931608738}
   - component: {fileID: 217001798204332994}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: PacMan
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -441,7 +441,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6302078949160044047}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Visual
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -476,7 +476,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3254560595380939373}
   - component: {fileID: 3416904586923533119}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: mouth
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -561,7 +561,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4043166284967995666}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: RightTrigger
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -591,7 +591,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1996942338199302111}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Bone.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -622,7 +622,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2276780263057705965}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Bone.001_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -653,7 +653,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4257021396662632232}
   - component: {fileID: 973366791}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: leftEye
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -738,7 +738,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2580761465537134526}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: RotRoot
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -771,7 +771,7 @@ GameObject:
   - component: {fileID: 3547634851009717333}
   - component: {fileID: 4827159689050416041}
   - component: {fileID: 5433108328534484399}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Collider
   m_TagString: Player
   m_Icon: {fileID: 0}
