@@ -2476,7 +2476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa7d520a5d4bc1f47bbb8f555f981f69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsRed: 0
+  Color: 0
   Speed: 2
   ForwardTrigger: {fileID: 4865292278755651998}
   BackwardTrigger: {fileID: 1290357929172202641}

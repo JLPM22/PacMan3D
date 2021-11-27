@@ -10,13 +10,21 @@ public class BreadBehaviour : MonoBehaviour
     public float DissolveTime = 1.0f;
     public float MaxLight = 2000.0f;
     public float MinLight = 0.0f;
+    public bool EatGhost;
 
     private bool IsDissolving;
     private Light Light;
+    private float StartScale;
 
     private void Awake()
     {
         Light = GetComponentInChildren<Light>();
+        StartScale = transform.GetChild(0).localScale.x;
+    }
+
+    private void Start()
+    {
+        ScoreManager.Instance.NumberBreads += 1;
     }
 
     private void Update()
@@ -28,6 +36,11 @@ public class BreadBehaviour : MonoBehaviour
     {
         if (!IsDissolving && other.CompareTag("Player"))
         {
+            if (EatGhost)
+            {
+                GhostManager.Instance.EnableEatableGhosts();
+            }
+
             ScoreManager.Instance.AddScore(Score);
             StartCoroutine(Dissolve());
         }
@@ -43,7 +56,7 @@ public class BreadBehaviour : MonoBehaviour
             float interpolation = t / DissolveTime;
             mat.SetFloat("DissolveT", interpolation);
             Light.intensity = Mathf.Lerp(MinLight, MaxLight, Mathf.PingPong(interpolation, 0.5f));
-            transform.GetChild(0).localScale = Vector3.Lerp(Vector3.one * 5, Vector3.one * 2.5f, interpolation);
+            transform.GetChild(0).localScale = Vector3.Lerp(Vector3.one * StartScale, Vector3.one * StartScale * 0.5f, interpolation);
             t += Time.deltaTime;
             yield return null;
         }

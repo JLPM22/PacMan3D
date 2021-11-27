@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PacManMovement : MonoBehaviour
 {
@@ -23,15 +24,19 @@ public class PacManMovement : MonoBehaviour
     private Vector3 TargetRot;
     private Vector3 LastPosition;
 
+    private bool IsDead;
     private bool InputForward, InputBackward, InputRight, InputLeft;
     private bool MovingZAxis; // true -> z-axis, false -> x-axis
+    private bool CanEat;
 
     private int PhysicsLayerMask;
+    private int GhostLayer;
 
     private void Awake()
     {
         Animator = GetComponent<Animator>();
-        PhysicsLayerMask = ~LayerMask.GetMask("Bread");
+        PhysicsLayerMask = ~LayerMask.GetMask("Bread", "Ghost");
+        GhostLayer = LayerMask.NameToLayer("Ghost");
     }
 
     private void Start()
@@ -47,6 +52,8 @@ public class PacManMovement : MonoBehaviour
 
     private void Update()
     {
+        if (IsDead) return;
+
         CheckInput();
 
         float x = transform.position.x - Mathf.Floor(transform.position.x);
@@ -163,4 +170,30 @@ public class PacManMovement : MonoBehaviour
     }
     private static readonly Vector3[] Directions = { Vector3.forward, Vector3.back, Vector3.right, Vector3.left };
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == GhostLayer)
+        {
+            if (CanEat)
+            {
+                other.GetComponentInParent<GhostMovement>().Eat();
+            }
+            else
+            {
+                StartCoroutine(GameOver());
+                IsDead = true;
+            }
+        }
+    }
+
+    private IEnumerator GameOver()
+    {
+        yield return new WaitForSeconds(5.0f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void SetCanEat(bool canEat)
+    {
+        CanEat = canEat;
+    }
 }

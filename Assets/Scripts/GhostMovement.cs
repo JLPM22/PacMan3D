@@ -25,6 +25,8 @@ public class GhostMovement : MonoBehaviour
     private int ForwardPhysicsLayerMask;
     private int PhysicsLayerMask;
 
+    private bool IsEatable;
+
     private PacManMovement PacMan;
 
     private void Awake()
@@ -68,6 +70,7 @@ public class GhostMovement : MonoBehaviour
         }
 
         float speed = ScoreManager.Instance.Score > 1800 && Color == GhostColor.Red ? Speed * 1.5f : Speed;
+        if (IsEatable) speed = Speed * 0.75f;
         transform.position = Vector3.MoveTowards(transform.position, Target, speed * Time.deltaTime);
 
         LastPosition = transform.position;
@@ -136,6 +139,11 @@ public class GhostMovement : MonoBehaviour
             dir = (PacMan.transform.position + dir) - transform.position;
         }
 
+        if (IsEatable)
+        {
+            dir = transform.position - PacMan.transform.position;
+        }
+
         Vector3 closestDir = FindClosestDirection(dir, forwardBlocked, backwardBlocked, leftBlocked, rightBlocked);
 
         InputForward = closestDir == Vector3.forward;
@@ -165,6 +173,24 @@ public class GhostMovement : MonoBehaviour
             }
         }
         return closest;
+    }
+
+    public void SetEatable(bool eatable)
+    {
+        IsEatable = eatable;
+    }
+
+    public void Eat()
+    {
+        ScoreManager.Instance.AddScore(200);
+        if (Color == GhostColor.Red || Color == GhostColor.Orange)
+        {
+            transform.position = new Vector3(14.0f, 0.0f, 16.5f);
+        }
+        else
+        {
+            transform.position = new Vector3(12.0f, 0.0f, 16.5f);
+        }
     }
 
     public enum GhostColor

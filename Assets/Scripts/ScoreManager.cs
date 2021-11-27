@@ -8,9 +8,12 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager Instance;
 
     public TextMeshProUGUI ScoreText;
+    public GameObject VictoryText;
 
     public int Score { get; private set; }
     public float LastTimeScoreChanged { get; private set; }
+
+    public int NumberBreads;
 
     private void Awake()
     {
@@ -25,6 +28,12 @@ public class ScoreManager : MonoBehaviour
         Score += amount;
         LastTimeScoreChanged = Time.time;
         UpdateScore();
+
+        NumberBreads -= 1;
+        if (NumberBreads == 0)
+        {
+            VictoryText.SetActive(true);
+        }
     }
 
     private void UpdateScore()
