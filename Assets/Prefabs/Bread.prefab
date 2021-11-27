@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7539113336788498201}
   - component: {fileID: 4645288187169738323}
   - component: {fileID: 8165829727923284679}
+  - component: {fileID: 4904635476483487211}
   m_Layer: 0
   m_Name: default
   m_TagString: Untagged
@@ -82,6 +83,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &4904635476483487211
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591566019240797218}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.064588
+  m_Center: {x: -0.0014970005, y: -0.0018780013, z: 0.026909005}
 --- !u!1 &7753979461469297915
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,6 +106,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6976211683320333889}
   - component: {fileID: 6362363770273218421}
+  - component: {fileID: 9076798414593045246}
   m_Layer: 0
   m_Name: Bread
   m_TagString: Untagged
@@ -126,5 +141,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 483cd4380404fd44c94b53a008c31718, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Axis: {x: 0, y: 1, z: 0}
-  Speed: 50
+  RotAxis: {x: 0, y: 1, z: 0}
+  RotSpeed: 50
+--- !u!54 &9076798414593045246
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7753979461469297915}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
