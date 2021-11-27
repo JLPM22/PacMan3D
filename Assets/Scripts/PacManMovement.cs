@@ -26,9 +26,12 @@ public class PacManMovement : MonoBehaviour
     private bool InputForward, InputBackward, InputRight, InputLeft;
     private bool MovingZAxis; // true -> z-axis, false -> x-axis
 
+    private int PhysicsLayerMask;
+
     private void Awake()
     {
         Animator = GetComponent<Animator>();
+        PhysicsLayerMask = ~LayerMask.GetMask("Bread");
     }
 
     private void Start()
@@ -49,13 +52,13 @@ public class PacManMovement : MonoBehaviour
         float x = transform.position.x - Mathf.Floor(transform.position.x);
         float z = transform.position.z - Mathf.Floor(transform.position.z);
 
-        if (!MovingZAxis && x >= 0.5f && x < 0.6f && (InputForward || InputBackward))
+        if (!MovingZAxis && x >= 0.5f && x < 0.6f && ((InputForward && !CheckCollision(Direction.Forward)) || (InputBackward && !CheckCollision(Direction.Backward))))
         {
             InputRight = false;
             InputLeft = false;
         }
 
-        if (MovingZAxis && z >= 0.5f && z < 0.6f && (InputRight || InputLeft))
+        if (MovingZAxis && z >= 0.5f && z < 0.6f && ((InputRight && !CheckCollision(Direction.Right)) || (InputLeft && !CheckCollision(Direction.Left))))
         {
             InputForward = false;
             InputBackward = false;
@@ -90,13 +93,13 @@ public class PacManMovement : MonoBehaviour
         switch (direction)
         {
             case Direction.Forward:
-                return Physics.CheckSphere(ForwardTrigger.position, 0.1f);
+                return Physics.CheckSphere(ForwardTrigger.position, 0.1f, PhysicsLayerMask);
             case Direction.Backward:
-                return Physics.CheckSphere(BackwardTrigger.position, 0.1f);
+                return Physics.CheckSphere(BackwardTrigger.position, 0.1f, PhysicsLayerMask);
             case Direction.Right:
-                return Physics.CheckSphere(RightTrigger.position, 0.1f);
+                return Physics.CheckSphere(RightTrigger.position, 0.1f, PhysicsLayerMask);
             case Direction.Left:
-                return Physics.CheckSphere(LeftTrigger.position, 0.1f);
+                return Physics.CheckSphere(LeftTrigger.position, 0.1f, PhysicsLayerMask);
         }
         return false;
     }
