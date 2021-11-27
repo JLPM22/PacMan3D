@@ -191,6 +191,7 @@ public class GhostMovement : MonoBehaviour
         {
             transform.position = new Vector3(12.0f, 0.0f, 16.5f);
         }
+        SoundManager.Instance.PlayPacManEatGhost();
     }
 
     public enum GhostColor

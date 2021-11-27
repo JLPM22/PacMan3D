@@ -94,6 +94,15 @@ public class PacManMovement : MonoBehaviour
 
         Animator.SetBool(WalkHash, Vector3.SqrMagnitude(transform.position - LastPosition) > 0.01f * 0.01f);
         LastPosition = transform.position;
+
+        if (Time.time - ScoreManager.Instance.LastTimeScoreChanged < 1.0f)
+        {
+            if (!CanEat) SoundManager.Instance.PlayPacManEat();
+        }
+        else
+        {
+            if (!CanEat) SoundManager.Instance.PlaySiren();
+        }
     }
 
     private bool CheckCollision(Direction direction)
@@ -188,6 +197,7 @@ public class PacManMovement : MonoBehaviour
 
     private IEnumerator GameOver()
     {
+        SoundManager.Instance.PlayPacManDeath();
         yield return new WaitForSeconds(5.0f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

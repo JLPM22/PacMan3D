@@ -43,6 +43,7 @@ public class GhostManager : MonoBehaviour
 
     private IEnumerator EatGhostCoroutine()
     {
+        SoundManager.Instance.PlayEatingGhost();
         foreach (GhostMovement ghost in Ghosts)
         {
             ghost.SetEatable(true);
