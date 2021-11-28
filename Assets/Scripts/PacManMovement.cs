@@ -187,10 +187,10 @@ public class PacManMovement : MonoBehaviour
             {
                 other.GetComponentInParent<GhostMovement>().Eat();
             }
-            else
+            else if (!IsDead)
             {
-                StartCoroutine(GameOver());
                 IsDead = true;
+                StartCoroutine(GameOver());
             }
         }
     }
@@ -199,6 +199,10 @@ public class PacManMovement : MonoBehaviour
     {
         SoundManager.Instance.PlayPacManDeath();
         yield return new WaitForSeconds(5.0f);
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

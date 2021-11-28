@@ -31,8 +31,8 @@ public class GhostMovement : MonoBehaviour
 
     private void Awake()
     {
-        ForwardPhysicsLayerMask = ~LayerMask.GetMask("OnlyGhost", "Ghost", "PacMan");
-        PhysicsLayerMask = ~LayerMask.GetMask("Ghost", "PacMan");
+        ForwardPhysicsLayerMask = ~LayerMask.GetMask("OnlyGhost", "Ghost", "PacMan", "Bread");
+        PhysicsLayerMask = ~LayerMask.GetMask("Ghost", "PacMan", "Bread");
         PacMan = FindObjectOfType<PacManMovement>();
     }
 
@@ -191,7 +191,13 @@ public class GhostMovement : MonoBehaviour
         {
             transform.position = new Vector3(12.0f, 0.0f, 16.5f);
         }
+        Teleport();
         SoundManager.Instance.PlayPacManEatGhost();
+    }
+
+    public void Teleport()
+    {
+        GetComponentInChildren<Cloth>().ClearTransformMotion();
     }
 
     public enum GhostColor

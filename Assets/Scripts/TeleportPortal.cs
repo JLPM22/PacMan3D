@@ -29,6 +29,7 @@ public class TeleportPortal : MonoBehaviour
                 Direction == ghost.CurrentDirection)
             {
                 ghost.transform.position = TeleportTarget.position;
+                ghost.Teleport();
             }
         }
     }
